@@ -19,7 +19,7 @@ export default function Footer() {
           <div className="flex gap-6">
 
             <a
-              href="https://wa.me/5492944802156"
+              href="https://api.whatsapp.com/send/?phone=5492944802156"
               target="_blank"
               rel="noreferrer"
               className={`inline-flex items-center gap-2 rounded text-slate-300 hover:text-pink-500 ${focusRing}`}

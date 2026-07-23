@@ -1,29 +1,64 @@
 import Reveal from "../components/Reveal";
 import SectionHeading from "../components/SectionHeading";
 
+const focusRing =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-500";
+
 // Para agregar una pregunta, sumar un objeto { question, answer } al array.
 const faqs = [
   {
-    question: "¿Necesito experiencia previa?",
+    question: "¿Hay que saber nadar?",
+    answer: "No. Todos los participantes llevan chaleco de flotación durante toda la actividad.",
+  },
+  {
+    question: "¿Cuál es la edad mínima?",
+    answer: "6 años en diciembre, enero y febrero. 8 años en octubre y noviembre.",
+  },
+  {
+    question: "¿Cuánto dura la experiencia?",
     answer:
-      "No. La actividad está pensada para personas sin experiencia.",
+      "Aproximadamente 2 horas en el agua. El turno mañana va de 10:30 a ~13:00 hs. El turno tarde de 14:30 a ~18:30 hs.",
   },
   {
     question: "¿Qué incluye la actividad?",
     answer:
-      "Incluye equipamiento completo y acompañamiento de guías especializados.",
+      "Guía profesional IRF, traje de neopreno, medias de neopreno, chaqueta rompevientos, casco, chaleco de flotación, transporte interno y uso de vestuarios y baños. El turno tarde incluye merienda.",
   },
   {
-    question: "¿Cuál es la edad mínima?",
-    answer: "Próximamente.",
+    question: "¿Qué tengo que llevar?",
+    answer:
+      "Traje de baño, zapatillas y una muda de ropa seca para cambiarte. En días fríos podés sumar una remera térmica. No uses ojotas.",
   },
   {
-    question: "¿Cuánto dura la experiencia?",
-    answer: "Próximamente.",
+    question: "¿Qué pasa si llueve?",
+    answer: "La actividad se realiza igual. Solo se suspende en caso de tormenta eléctrica.",
   },
   {
-    question: "¿Qué debo llevar?",
-    answer: "Próximamente.",
+    question: "¿Hay traslado disponible?",
+    answer:
+      "Sí, en el turno tarde desde San Martín de los Andes y Junín de los Andes. El turno mañana es solo con vehículo propio.",
+  },
+  {
+    question: "¿Hay baños, vestuarios y estacionamiento?",
+    answer: "Sí. La base cuenta con baños completos, vestuarios para ambos sexos y estacionamiento gratuito.",
+  },
+  {
+    question: "¿Cómo puedo pagar?",
+    answer: "Efectivo, transferencia bancaria o Mercado Pago.",
+  },
+  {
+    question: "¿Puedo cancelar o cambiar la fecha?",
+    answer:
+      "Sí, con más de 24 horas de anticipación se devuelve el 100%. Sin esa anticipación no hay reintegro. Si llegás tarde se pierde la actividad sin devolución.",
+  },
+  {
+    question: "¿Hay fotografía profesional?",
+    answer: "Sí, como servicio opcional con costo aparte. Se contrata el mismo día de la actividad.",
+  },
+  {
+    question: "¿Pueden participar personas con problemas de salud?",
+    answer:
+      "Las personas embarazadas no pueden participar. Cualquier otra condición médica debe comunicarse antes de reservar para evaluarla.",
   },
 ];
 
@@ -68,6 +103,19 @@ export default function Faq() {
               </details>
             </Reveal>
           ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <p className="mb-4 text-slate-600">¿Tenés otra consulta?</p>
+
+          <a
+            href="https://api.whatsapp.com/send/?phone=5492944802156&text=Hola%2C%20tengo%20una%20consulta%20sobre%20el%20rafting."
+            target="_blank"
+            rel="noreferrer"
+            className={`inline-flex rounded-full bg-pink-500 px-8 py-4 font-semibold text-white transition hover:bg-pink-600 ${focusRing}`}
+          >
+            Escribinos por WhatsApp
+          </a>
         </div>
 
       </div>

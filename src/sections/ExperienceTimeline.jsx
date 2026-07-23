@@ -5,27 +5,27 @@ const steps = [
   {
     number: "01",
     title: "Llegada",
-    description: "Recepción en la base",
+    description: "Recepción en la base frente al Lago Huechulafquen.",
   },
   {
     number: "02",
     title: "Equipamiento",
-    description: "Casco, chaleco y neopreno",
+    description: "Traje, medias de neopreno, casco y chaleco.",
   },
   {
     number: "03",
     title: "Briefing",
-    description: "Instrucciones y seguridad",
+    description: "Charla de seguridad y técnica de remo con tu guía.",
   },
   {
     number: "04",
     title: "Rafting",
-    description: "Aventura en el Chimehuín",
+    description: "2 horas en el Chimehuín, incluyendo la Garganta del Diablo.",
   },
   {
     number: "05",
     title: "Regreso",
-    description: "Fin de la experiencia",
+    description: "Traslado a la base. Vestuarios y merienda (turno tarde).",
   },
 ];
 
@@ -41,6 +41,10 @@ export default function ExperienceTimeline() {
           title="¿Cómo es la experiencia?"
           description="Desde la llegada hasta el último rápido, te acompañamos para que disfrutes una experiencia segura, divertida e inolvidable en el Río Chimehuín."
         />
+
+        <p className="mb-10 text-center text-sm text-slate-500">
+          Turno mañana: 10:30 hs · Turno tarde: 14:30 hs
+        </p>
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
           {steps.map((step, index) => (

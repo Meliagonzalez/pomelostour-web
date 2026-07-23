@@ -12,13 +12,13 @@ export default function Contact() {
         <SectionHeading
           eyebrow="Contacto"
           title="¿Listo para vivir la experiencia?"
-          description="Contactanos por WhatsApp o seguinos en Instagram para conocer novedades, fotos y disponibilidad."
+          description="Escribinos por WhatsApp o seguinos en Instagram. Respondemos todos los días de 9 a 21 hs."
         />
 
         <Reveal as="div" className="flex flex-col items-center gap-4">
 
           <a
-            href="https://wa.me/5492944802156"
+            href="https://api.whatsapp.com/send/?phone=5492944802156&text=Hola%2C%20quiero%20reservar%20mi%20lugar%20en%20el%20rafting%20%F0%9F%9A%A3"
             target="_blank"
             rel="noreferrer"
             className={`inline-flex items-center gap-2 rounded-full bg-pink-500 px-8 py-4 font-semibold text-white transition hover:bg-pink-600 ${focusRing}`}
@@ -42,6 +42,14 @@ export default function Contact() {
             </svg>
             @pomelostour
           </a>
+
+          <p className="mt-2 text-sm text-slate-500">
+            Av. San Martín 941, Local 2 · San Martín de los Andes
+          </p>
+
+          <p className="text-sm text-slate-500">
+            Atención: 9 a 21 hs todos los días
+          </p>
 
         </Reveal>
 

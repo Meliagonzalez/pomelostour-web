@@ -37,9 +37,28 @@ export default function River() {
             </p>
 
             <p className="text-slate-600">
-              Próximamente agregaremos más información sobre el recorrido,
-              duración y puntos destacados de la navegación.
+              Nace en el Lago Huechulafquen y recorre bosques andino-patagónicos
+              con el Volcán Lanín de fondo. Aguas cristalinas de 16 a 18°C,
+              nivel de dificultad medio en primavera y bajo-medio en verano.
+              Incluye el rápido Garganta del Diablo, exclusivo de Pomelostour.
             </p>
+
+            <div className="mt-8 grid grid-cols-1 gap-6 border-t border-slate-200 pt-6 sm:grid-cols-3">
+              <div>
+                <p className="text-xl font-black text-slate-900">Clase II+</p>
+                <p className="text-sm text-slate-500">Dificultad</p>
+              </div>
+
+              <div>
+                <p className="text-xl font-black text-slate-900">16–18°C</p>
+                <p className="text-sm text-slate-500">Temperatura del agua</p>
+              </div>
+
+              <div>
+                <p className="text-xl font-black text-slate-900">Garganta del Diablo</p>
+                <p className="text-sm text-slate-500">Rápido exclusivo</p>
+              </div>
+            </div>
 
           </div>
         </Reveal>

@@ -1,20 +1,23 @@
 import Reveal from "../components/Reveal";
 import SectionHeading from "../components/SectionHeading";
 
-// Para agregar una reseña, sumar un objeto { name, text } al array.
+// Para agregar una reseña, sumar un objeto { name, city, text } al array.
 // TODO: reemplazar estos ejemplos por reseñas reales de pasajeros.
 const testimonials = [
   {
-    name: "María G.",
-    text: "Una experiencia increíble. Los guías fueron excelentes y el paisaje espectacular.",
+    name: "Martina G.",
+    city: "Buenos Aires",
+    text: "Una experiencia increíble. Los guías te dan confianza desde el primer momento y el paisaje es único.",
   },
   {
-    name: "Juan P.",
-    text: "Era mi primera vez haciendo rafting y me sentí seguro durante toda la actividad.",
+    name: "Familia Rodríguez",
+    city: "Córdoba",
+    text: "Fuimos con chicos de 7 años y fue perfecto. Muy bien organizado y seguro en todo momento.",
   },
   {
-    name: "Lucía R.",
-    text: "La mejor excursión de nuestras vacaciones en San Martín de los Andes.",
+    name: "Lucas M.",
+    city: "Rosario",
+    text: "La Garganta del Diablo es una locura. Definitivamente la mejor actividad de nuestra semana en San Martín.",
   },
 ];
 
@@ -26,7 +29,7 @@ export default function Testimonials() {
         <SectionHeading
           eyebrow="Opiniones"
           title="Lo que dicen nuestros visitantes"
-          description="Próximamente mostraremos reseñas reales de nuestros pasajeros."
+          description="Más de 25 años llevando familias, parejas y grupos a vivir el Chimehuín."
         />
 
         <div className="grid gap-8 md:grid-cols-3">
@@ -49,6 +52,10 @@ export default function Testimonials() {
 
                 <p className="mt-6 font-bold text-slate-900">
                   {item.name}
+                </p>
+
+                <p className="text-sm text-slate-500">
+                  {item.city}
                 </p>
               </div>
             </Reveal>

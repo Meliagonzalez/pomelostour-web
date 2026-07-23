@@ -11,7 +11,7 @@ const SHIFT_DETAILS = {
     messageLabel: "Mañana (10:30 hs)",
   },
   "Tarde": {
-    detail: "14:30 hs · Finaliza ~18:30 hs · Incluye merienda",
+    detail: "14:30 hs · Finaliza ~18:30 hs · Incluye merienda · Traslado disponible",
     messageLabel: "Tarde (14:30 hs)",
   },
 };
@@ -59,8 +59,8 @@ export default function Reservation() {
     }
 
     const peopleNumber = Number(people);
-    if (!people || Number.isNaN(peopleNumber) || peopleNumber < 1 || peopleNumber > 12) {
-      newErrors.people = "Ingresá una cantidad válida de personas (entre 1 y 12).";
+    if (!people || Number.isNaN(peopleNumber) || peopleNumber < 1 || peopleNumber > 9) {
+      newErrors.people = "Ingresá una cantidad válida de personas (entre 1 y 9).";
     }
 
     if (shift === "Tarde" && !transfer) {
@@ -177,7 +177,7 @@ export default function Reservation() {
                 id="reserva-personas"
                 type="number"
                 min="1"
-                max="12"
+                max="9"
                 step="1"
                 value={people}
                 onChange={(e) => setPeople(e.target.value)}

@@ -33,23 +33,23 @@ const items = [
     icon: "check",
     title: "No requiere experiencia",
     description:
-      "La actividad está pensada para personas sin experiencia previa.",
+      "Apto para todo público desde los 6 años. Guía profesional IRF en cada embarcación.",
   },
   {
     icon: "shield",
-    title: "Equipamiento incluido",
+    title: "Equipamiento completo",
     description:
-      "Casco, chaleco salvavidas y traje de neopreno incluidos.",
+      "Traje de neopreno, medias de neopreno, chaqueta rompevientos, casco y chaleco incluidos.",
   },
   {
     icon: "users",
     title: "Edad mínima",
-    description: "Próximamente",
+    description: "6 años (dic–feb) · 8 años (oct–nov). No es necesario saber nadar.",
   },
   {
     icon: "clock",
     title: "Duración",
-    description: "Próximamente",
+    description: "~2 horas en el agua. Turno mañana 10:30 hs · Turno tarde 14:30 hs.",
   },
 ];
 
