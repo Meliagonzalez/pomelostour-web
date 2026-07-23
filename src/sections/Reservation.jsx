@@ -1,5 +1,22 @@
 import { useState } from "react";
 
+const SHIFT_DETAILS = {
+  "Mañana": {
+    detail: "10:30 hs · Finaliza ~13:00 hs · Solo vehículo propio · Sin merienda",
+    messageLabel: "Mañana (10:30 hs)",
+  },
+  "Tarde": {
+    detail: "14:30 hs · Finaliza ~18:30 hs · Incluye merienda",
+    messageLabel: "Tarde (14:30 hs)",
+  },
+};
+
+const TRANSFER_OPTIONS = {
+  no: "No, vamos por nuestra cuenta.",
+  sma: "Sí, desde San Martín de los Andes.",
+  junin: "Sí, desde Junín de los Andes.",
+};
+
 export default function Reservation() {
   const [date, setDate] = useState("");
   const [shift, setShift] = useState("Mañana");
@@ -11,6 +28,18 @@ export default function Reservation() {
   minDateObj.setDate(minDateObj.getDate() + 1);
   const minDate = `${minDateObj.getFullYear()}-${String(minDateObj.getMonth() + 1).padStart(2, "0")}-${String(minDateObj.getDate()).padStart(2, "0")}`;
 
+  function handleShiftChange(value) {
+    setShift(value);
+    if (value !== "Tarde") {
+      setTransfer("");
+      setErrors((prev) => {
+        const rest = { ...prev };
+        delete rest.transfer;
+        return rest;
+      });
+    }
+  }
+
   function handleSubmit() {
     const newErrors = {};
 
@@ -20,12 +49,16 @@ export default function Reservation() {
       newErrors.date = "La fecha debe ser con al menos 1 día de anticipación.";
     }
 
-    const peopleNumber = Number(people);
-    if (!people || Number.isNaN(peopleNumber) || peopleNumber < 1) {
-      newErrors.people = "Ingresá una cantidad válida de personas.";
+    if (!shift) {
+      newErrors.shift = "Seleccioná un turno.";
     }
 
-    if (!transfer) {
+    const peopleNumber = Number(people);
+    if (!people || Number.isNaN(peopleNumber) || peopleNumber < 1 || peopleNumber > 12) {
+      newErrors.people = "Ingresá una cantidad válida de personas (entre 1 y 12).";
+    }
+
+    if (shift === "Tarde" && !transfer) {
       newErrors.transfer = "Seleccioná una opción.";
     }
 
@@ -38,17 +71,23 @@ export default function Reservation() {
     const [year, month, day] = date.split("-");
     const formattedDate = `${day}/${month}/${year}`;
 
-    const message =
-`¡Hola! \u{1F44B}
+    const messageLines = [
+      "¡Hola! \u{1F44B}",
+      "",
+      "Quisiera consultar disponibilidad para realizar rafting.",
+      "",
+      `\u{1F4C5} Fecha: ${formattedDate}`,
+      `\u{1F558} Turno: ${SHIFT_DETAILS[shift].messageLabel}`,
+      `\u{1F465} Personas: ${people}`,
+    ];
 
-Quisiera consultar disponibilidad para realizar rafting.
+    if (shift === "Tarde") {
+      messageLines.push(`\u{1F690} Traslado: ${TRANSFER_OPTIONS[transfer]}`);
+    }
 
-\u{1F4C5} Fecha: ${formattedDate}
-\u{1F558} Turno: ${shift}
-\u{1F465} Cantidad de personas: ${people}
-\u{1F690} Traslado: ${transfer}
+    messageLines.push("", "¡Muchas gracias!");
 
-¡Muchas gracias!`;
+    const message = messageLines.join("\n");
 
     const whatsappUrl =
       `https://api.whatsapp.com/send/?phone=5492944802156&text=${encodeURIComponent(message)}`;
@@ -111,12 +150,24 @@ Quisiera consultar disponibilidad para realizar rafting.
               <select
                 id="reserva-turno"
                 value={shift}
-                onChange={(e) => setShift(e.target.value)}
+                onChange={(e) => handleShiftChange(e.target.value)}
+                aria-invalid={Boolean(errors.shift)}
+                aria-describedby={errors.shift ? "reserva-turno-error" : undefined}
                 className="w-full rounded-xl border border-slate-300 bg-white p-4"
               >
-                <option>Mañana</option>
-                <option>Tarde</option>
+                <option value="Mañana">Mañana</option>
+                <option value="Tarde">Tarde</option>
               </select>
+
+              <p className="mt-2 text-sm text-slate-500">
+                {SHIFT_DETAILS[shift].detail}
+              </p>
+
+              {errors.shift && (
+                <p id="reserva-turno-error" className="mt-1 text-sm text-red-600">
+                  {errors.shift}
+                </p>
+              )}
             </div>
 
             <div>
@@ -128,7 +179,7 @@ Quisiera consultar disponibilidad para realizar rafting.
                 id="reserva-personas"
                 type="number"
                 min="1"
-                max="35"
+                max="12"
                 step="1"
                 value={people}
                 onChange={(e) => setPeople(e.target.value)}
@@ -144,30 +195,33 @@ Quisiera consultar disponibilidad para realizar rafting.
               )}
             </div>
 
-            <div>
-              <label htmlFor="reserva-traslado" className="mb-2 block font-semibold text-slate-700">
-                ¿Necesitan traslado?
-              </label>
+            {shift === "Tarde" && (
+              <div>
+                <label htmlFor="reserva-traslado" className="mb-2 block font-semibold text-slate-700">
+                  ¿Necesitás traslado?
+                </label>
 
-              <select
-                id="reserva-traslado"
-                value={transfer}
-                onChange={(e) => setTransfer(e.target.value)}
-                aria-invalid={Boolean(errors.transfer)}
-                aria-describedby={errors.transfer ? "reserva-traslado-error" : undefined}
-                className="w-full rounded-xl border border-slate-300 bg-white p-4"
-              >
-                <option value="">Seleccioná una opción</option>
-                <option value="No, vamos por nuestra cuenta.">No, vamos por nuestra cuenta.</option>
-                <option value="Sí, necesitamos traslado.">Sí, necesitamos traslado.</option>
-              </select>
+                <select
+                  id="reserva-traslado"
+                  value={transfer}
+                  onChange={(e) => setTransfer(e.target.value)}
+                  aria-invalid={Boolean(errors.transfer)}
+                  aria-describedby={errors.transfer ? "reserva-traslado-error" : undefined}
+                  className="w-full rounded-xl border border-slate-300 bg-white p-4"
+                >
+                  <option value="" disabled hidden>¿Necesitás traslado?</option>
+                  <option value="no">No, vamos por nuestra cuenta.</option>
+                  <option value="sma">Sí, desde San Martín de los Andes.</option>
+                  <option value="junin">Sí, desde Junín de los Andes.</option>
+                </select>
 
-              {errors.transfer && (
-                <p id="reserva-traslado-error" className="mt-1 text-sm text-red-600">
-                  {errors.transfer}
-                </p>
-              )}
-            </div>
+                {errors.transfer && (
+                  <p id="reserva-traslado-error" className="mt-1 text-sm text-red-600">
+                    {errors.transfer}
+                  </p>
+                )}
+              </div>
+            )}
 
           </div>
 
