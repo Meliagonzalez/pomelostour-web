@@ -1,4 +1,5 @@
 import { useState } from "react";
+import logo from "../assets/logo.png";
 
 const links = [
   { label: "Experiencia", href: "#experiencia" },
@@ -20,7 +21,7 @@ export default function Header() {
         {/* Logo */}
         <a href="#" className="flex items-center gap-3">
           <img
-  src="/src/assets/logo.png"
+  src={logo}
   alt="Pomelostour"
   className="h-40 w-auto"
 />
@@ -60,6 +61,9 @@ export default function Header() {
         <button
           className="lg:hidden text-white text-3xl"
           onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Abrir menú"
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
         >
           ☰
         </button>
@@ -67,7 +71,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="lg:hidden bg-slate-900 border-t border-white/10">
+        <div id="mobile-menu" className="lg:hidden bg-slate-900 border-t border-white/10">
           <div className="flex flex-col p-6 gap-4">
             {links.map((link) => (
               <a

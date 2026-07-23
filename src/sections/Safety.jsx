@@ -25,7 +25,7 @@ export default function Safety() {
   return (
     <section
       id="seguridad"
-      className="bg-slate-50 py-24"
+      className="scroll-mt-28 bg-slate-50 py-24"
     >
       <div className="mx-auto max-w-7xl px-6">
 

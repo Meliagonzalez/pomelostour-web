@@ -21,7 +21,7 @@ export default function Hero() {
           </span>
 
           <h1 className="mb-6 text-6xl font-black uppercase text-white md:text-8xl">
-            Desafiá el Chimehuín
+            Rafting rio Chimehuín
           </h1>
 
           <p className="mb-8 max-w-xl text-lg text-slate-200">

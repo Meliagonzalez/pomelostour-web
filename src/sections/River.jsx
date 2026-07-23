@@ -2,7 +2,7 @@ export default function River() {
   return (
     <section
       id="rio"
-      className="bg-white py-24"
+      className="scroll-mt-28 bg-white py-24"
     >
       <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-2 lg:items-center">
 
@@ -11,6 +11,7 @@ export default function River() {
           <img
             src="https://images.unsplash.com/photo-1506744038136-46273834b3fb"
             alt="Río Chimehuín"
+            loading="lazy"
             className="h-full w-full object-cover"
           />
         </div>

@@ -17,7 +17,7 @@ export default function Testimonials() {
   return (
     <section
       id="opiniones"
-      className="bg-white py-24"
+      className="scroll-mt-28 bg-white py-24"
     >
       <div className="mx-auto max-w-7xl px-6">
 

@@ -27,7 +27,7 @@ export default function Faq() {
   return (
     <section
       id="faq"
-      className="bg-slate-50 py-24"
+      className="scroll-mt-28 bg-slate-50 py-24"
     >
 <div className="mx-auto max-w-3xl px-6">
         <p className="mb-4 text-center text-sm font-semibold uppercase tracking-widest text-pink-500">

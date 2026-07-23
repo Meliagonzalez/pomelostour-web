@@ -11,7 +11,7 @@ export default function Gallery() {
   return (
     <section
       id="galeria"
-      className="bg-slate-50 py-24"
+      className="scroll-mt-28 bg-slate-50 py-24"
     >
       <div className="mx-auto max-w-7xl px-6">
 
@@ -37,6 +37,7 @@ export default function Gallery() {
               <img
                 src={image}
                 alt={`Galería ${index + 1}`}
+                loading="lazy"
                 className="
                   h-72
                   w-full
