@@ -9,6 +9,8 @@ export default function Hero() {
         alt="Rafting en el Río Chimehuín"
         className="absolute inset-0 h-full w-full object-cover object-top"
         style={{ objectPosition: "center 28%" }}
+        fetchPriority="high"
+        decoding="async"
       />
 
       {/* Overlay */}
@@ -16,7 +18,7 @@ export default function Hero() {
 
       {/* Contenido */}
       <div className="relative z-10 mx-auto flex h-[85vh] max-w-7xl items-end px-6 pb-16 lg:px-12 md:pb-24">
-        <div className="max-w-2xl">
+        <div className="max-w-2xl animate-fade-up">
           <span className="mb-4 block text-sm font-semibold uppercase tracking-widest text-pink-500">
             Rafting en San Martín de los Andes
           </span>

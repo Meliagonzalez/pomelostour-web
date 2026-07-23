@@ -1,4 +1,9 @@
 import { useState } from "react";
+import Reveal from "../components/Reveal";
+import SectionHeading from "../components/SectionHeading";
+
+const focusRing =
+  "focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-pink-500";
 
 const SHIFT_DETAILS = {
   "Mañana": {
@@ -102,20 +107,13 @@ export default function Reservation() {
     >
       <div className="mx-auto max-w-4xl px-6">
 
-        <p className="mb-4 text-center text-sm font-semibold uppercase tracking-widest text-pink-500">
-          Reserva
-        </p>
+        <SectionHeading
+          eyebrow="Reserva"
+          title="Reservá tu lugar"
+          description="Elegí el turno y la cantidad de personas. Te responderemos por WhatsApp con la disponibilidad y toda la información necesaria."
+        />
 
-        <h2 className="mb-6 text-center text-5xl font-black text-slate-900">
-          Reservá tu lugar
-        </h2>
-
-        <p className="mx-auto mb-12 max-w-2xl text-center text-slate-600">
-          Elegí el turno y la cantidad de personas. Te responderemos por
-          WhatsApp con la disponibilidad y toda la información necesaria.
-        </p>
-
-        <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8 shadow-sm">
+        <Reveal as="div" className="rounded-3xl border border-slate-200 bg-slate-50 p-8 shadow-sm">
 
           <div className="grid gap-6 md:grid-cols-2">
 
@@ -132,7 +130,7 @@ export default function Reservation() {
                 onChange={(e) => setDate(e.target.value)}
                 aria-invalid={Boolean(errors.date)}
                 aria-describedby={errors.date ? "reserva-fecha-error" : undefined}
-                className="w-full rounded-xl border border-slate-300 bg-white p-4"
+                className={`w-full rounded-xl border border-slate-300 bg-white p-4 ${focusRing}`}
               />
 
               {errors.date && (
@@ -153,7 +151,7 @@ export default function Reservation() {
                 onChange={(e) => handleShiftChange(e.target.value)}
                 aria-invalid={Boolean(errors.shift)}
                 aria-describedby={errors.shift ? "reserva-turno-error" : undefined}
-                className="w-full rounded-xl border border-slate-300 bg-white p-4"
+                className={`w-full rounded-xl border border-slate-300 bg-white p-4 ${focusRing}`}
               >
                 <option value="Mañana">Mañana</option>
                 <option value="Tarde">Tarde</option>
@@ -185,7 +183,7 @@ export default function Reservation() {
                 onChange={(e) => setPeople(e.target.value)}
                 aria-invalid={Boolean(errors.people)}
                 aria-describedby={errors.people ? "reserva-personas-error" : undefined}
-                className="w-full rounded-xl border border-slate-300 bg-white p-4"
+                className={`w-full rounded-xl border border-slate-300 bg-white p-4 ${focusRing}`}
               />
 
               {errors.people && (
@@ -229,7 +227,7 @@ export default function Reservation() {
             <button
               type="button"
               onClick={handleSubmit}
-              className="
+              className={`
                 inline-flex
                 rounded-full
                 bg-pink-500
@@ -239,13 +237,14 @@ export default function Reservation() {
                 text-white
                 transition
                 hover:bg-pink-600
-              "
+                ${focusRing}
+              `}
             >
               Reservar por WhatsApp
             </button>
           </div>
 
-        </div>
+        </Reveal>
       </div>
     </section>
   );
