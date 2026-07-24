@@ -55,7 +55,7 @@ const items = [
 
 export default function Safety() {
   return (
-    <section id="seguridad" className="scroll-mt-28 bg-slate-50 py-24">
+    <section id="seguridad" className="scroll-mt-28 bg-slate-50 py-14 md:py-24">
       <div className="mx-auto max-w-7xl px-6">
 
         <SectionHeading
@@ -64,11 +64,11 @@ export default function Safety() {
           description="Nuestro objetivo es que disfrutes una experiencia divertida, segura y apta para toda la familia."
         />
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {items.map((item, index) => (
             <Reveal key={item.title} delay={index * 80}>
-              <div className="h-full rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-pink-50 text-pink-500">
+              <div className="h-full rounded-2xl bg-white p-6 shadow-sm transition-all duration-200 hover:scale-[1.02] hover:shadow-md">
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-brand/10 text-brand">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -86,7 +86,7 @@ export default function Safety() {
                   {item.title}
                 </h3>
 
-                <p className="mt-3 text-slate-600">
+                <p className="mt-3 leading-relaxed text-slate-600">
                   {item.description}
                 </p>
               </div>

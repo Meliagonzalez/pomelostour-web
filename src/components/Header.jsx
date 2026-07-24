@@ -1,5 +1,5 @@
-import { useState } from "react";
-import logo from "../assets/logo.png";
+import { useEffect, useState } from "react";
+import logo from "../assets/logo-optimized.webp";
 
 const links = [
   { label: "Experiencia", href: "#experiencia" },
@@ -12,13 +12,28 @@ const links = [
 ];
 
 const focusRing =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-500";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    function handleScroll() {
+      setScrolled(window.scrollY > 40);
+    }
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-black/50 backdrop-blur-md border-b border-white/10">
+    <header
+      className={`fixed top-0 left-0 w-full z-50 border-b border-white/10 transition-colors duration-300 ${
+        scrolled ? "bg-black/80 backdrop-blur-sm" : "bg-black/50 backdrop-blur-md"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
 
         {/* Logo */}
@@ -45,7 +60,7 @@ export default function Header() {
             <a
               key={link.label}
               href={link.href}
-              className={`rounded text-gray-200 hover:text-white transition ${focusRing}`}
+              className={`rounded text-gray-200 hover:text-white transition-colors duration-150 ${focusRing}`}
             >
               {link.label}
             </a>
@@ -55,7 +70,7 @@ export default function Header() {
         {/* CTA */}
         <a
           href="#reserva"
-          className={`hidden lg:inline-flex bg-pink-500 hover:bg-pink-600 text-white px-5 py-2 rounded-full font-medium transition ${focusRing}`}
+          className={`hidden lg:inline-flex bg-brand hover:bg-brand-dark text-white px-6 py-3 rounded-full font-bold transition-all duration-200 ${focusRing}`}
         >
           Reservar
         </a>
@@ -100,7 +115,7 @@ export default function Header() {
             <a
               key={link.label}
               href={link.href}
-              className={`rounded text-gray-200 ${focusRing}`}
+              className={`rounded text-gray-200 transition-colors duration-150 ${focusRing}`}
               onClick={() => setMenuOpen(false)}
             >
               {link.label}
@@ -109,7 +124,7 @@ export default function Header() {
 
           <a
             href="#reserva"
-            className={`bg-pink-500 text-white text-center py-3 rounded-full font-medium mt-2 ${focusRing}`}
+            className={`bg-brand text-white text-center py-3 rounded-full font-bold transition-all duration-200 mt-2 ${focusRing}`}
             onClick={() => setMenuOpen(false)}
           >
             Reservar

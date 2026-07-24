@@ -3,7 +3,7 @@ import Reveal from "../components/Reveal";
 import SectionHeading from "../components/SectionHeading";
 
 const focusRing =
-  "focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-pink-500";
+  "focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-brand";
 
 const SHIFT_DETAILS = {
   "Mañana": {
@@ -103,7 +103,7 @@ export default function Reservation() {
   return (
     <section
       id="reserva"
-      className="scroll-mt-28 bg-white py-24"
+      className="scroll-mt-28 bg-white py-14 md:py-24"
     >
       <div className="mx-auto max-w-4xl px-6">
 
@@ -113,7 +113,7 @@ export default function Reservation() {
           description="Elegí el turno y la cantidad de personas. Te responderemos por WhatsApp con la disponibilidad y toda la información necesaria."
         />
 
-        <Reveal as="div" className="rounded-3xl border border-slate-200 bg-slate-50 p-8 shadow-sm">
+        <Reveal as="div" className="rounded-2xl bg-slate-50 p-8 shadow-sm">
 
           <div className="grid gap-6 md:grid-cols-2">
 
@@ -230,13 +230,14 @@ export default function Reservation() {
               className={`
                 inline-flex
                 rounded-full
-                bg-pink-500
+                bg-brand
                 px-8
                 py-4
-                font-semibold
+                font-bold
                 text-white
-                transition
-                hover:bg-pink-600
+                transition-all
+                duration-200
+                hover:bg-brand-dark
                 ${focusRing}
               `}
             >

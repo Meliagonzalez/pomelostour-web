@@ -30,11 +30,11 @@ const steps = [
 ];
 
 const focusRing =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-500";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand";
 
 export default function ExperienceTimeline() {
   return (
-    <section id="experiencia" className="scroll-mt-28 bg-slate-50 py-24">
+    <section id="experiencia" className="scroll-mt-28 bg-slate-50 py-14 md:py-24">
       <div className="mx-auto max-w-7xl px-6">
         <SectionHeading
           eyebrow="La experiencia"
@@ -49,8 +49,8 @@ export default function ExperienceTimeline() {
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
           {steps.map((step, index) => (
             <Reveal key={step.number} delay={index * 80}>
-              <div className="h-full rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl">
-                <span className="text-4xl font-black text-pink-500">
+              <div className="h-full rounded-2xl bg-white p-6 shadow-sm transition-all duration-200 hover:scale-[1.02] hover:shadow-md">
+                <span className="text-4xl font-black text-brand">
                   {step.number}
                 </span>
 
@@ -58,7 +58,7 @@ export default function ExperienceTimeline() {
                   {step.title}
                 </h3>
 
-                <p className="mt-2 text-slate-600">
+                <p className="mt-2 leading-relaxed text-slate-600">
                   {step.description}
                 </p>
               </div>
@@ -69,7 +69,7 @@ export default function ExperienceTimeline() {
         <div className="mt-12 text-center">
           <a
             href="#reserva"
-            className={`inline-flex rounded-full bg-pink-500 px-8 py-4 font-semibold text-white transition hover:bg-pink-600 ${focusRing}`}
+            className={`inline-flex rounded-full bg-brand px-8 py-4 font-bold text-white transition-all duration-200 hover:bg-brand-dark ${focusRing}`}
           >
             Reservar mi turno
           </a>

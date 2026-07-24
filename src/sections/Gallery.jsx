@@ -1,32 +1,32 @@
 import { useEffect, useRef, useState } from "react";
 import Reveal from "../components/Reveal";
 import SectionHeading from "../components/SectionHeading";
-import raftingRapido from "../assets/images/Todas/rafting-rapido.jpeg";
-import olaBalsa4 from "../assets/images/Todas/ola-balsa-4.jpeg";
-import aerialRafts from "../assets/images/Todas/DJI_0026.jpg";
-import familia from "../assets/images/Todas/famil.jpeg";
-import saltoBalsa from "../assets/images/Todas/Salto balsa.jpeg";
-import remosArriba from "../assets/images/Todas/remos-arriba.jpeg";
-import plantelRafting from "../assets/images/Todas/plantel-river-rafting.jpeg";
-import deckRafting from "../assets/images/Todas/deck-rafting.jpeg";
-import martinPescador from "../assets/images/Todas/martin-pescador.jpeg";
+import raftingRapido from "../assets/images/optimized/rafting-rapido.webp";
+import olaBalsa4 from "../assets/images/optimized/ola-balsa-4.webp";
+import aerialRafts from "../assets/images/optimized/dji-0026.webp";
+import familia from "../assets/images/optimized/famil.webp";
+import saltoBalsa from "../assets/images/optimized/salto-balsa.webp";
+import remosArriba from "../assets/images/optimized/remos-arriba.webp";
+import plantelRafting from "../assets/images/optimized/plantel-river-rafting.webp";
+import deckRafting from "../assets/images/optimized/deck-rafting.webp";
+import martinPescador from "../assets/images/optimized/martin-pescador.webp";
 
 const photos = [
   { id: 1, alt: "Bote atravesando un rápido del Río Chimehuín", src: raftingRapido },
-  { id: 2, alt: "Balsa saltando entre las olas de un rápido", src: olaBalsa4 },
-  { id: 3, alt: "Vista aérea de las balsas navegando el río", src: aerialRafts },
-  { id: 4, alt: "Familia disfrutando la bajada junto al Volcán Lanín", src: familia },
-  { id: 5, alt: "Saltando al agua después del descenso", src: saltoBalsa },
-  { id: 6, alt: "Remos en alto celebrando la bajada", src: remosArriba },
-  { id: 7, alt: "Grupo festejando arriba de la balsa", src: plantelRafting },
-  { id: 8, alt: "Vista del deck de la base, con el Lago Huechulafquen y el Volcán Lanín", src: deckRafting },
+  { id: 2, alt: "Balsa de rafting saltando entre las olas de un rápido en el Río Chimehuín", src: olaBalsa4 },
+  { id: 3, alt: "Vista aérea de balsas de rafting navegando el Río Chimehuín", src: aerialRafts },
+  { id: 4, alt: "Familia disfrutando el rafting junto al Volcán Lanín", src: familia },
+  { id: 5, alt: "Pasajero saltando al agua después de un descenso de rafting", src: saltoBalsa },
+  { id: 6, alt: "Remos en alto celebrando un descenso de rafting en el Chimehuín", src: remosArriba },
+  { id: 7, alt: "Grupo de rafting festejando arriba de la balsa con Pomelostour", src: plantelRafting },
+  { id: 8, alt: "Vista del deck de la base de Pomelostour, con el Lago Huechulafquen y el Volcán Lanín", src: deckRafting },
   { id: 9, alt: "Martín pescador, fauna típica del Río Chimehuín", src: martinPescador },
 ];
 
 const aspectRatios = ["aspect-[3/4]", "aspect-square", "aspect-[4/5]"];
 
 const iconFocusRing =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-500";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand";
 
 export default function Gallery() {
   const [openIndex, setOpenIndex] = useState(null);
@@ -56,7 +56,7 @@ export default function Gallery() {
   const activePhoto = openIndex !== null ? photos[openIndex] : null;
 
   return (
-    <section id="galeria" className="scroll-mt-28 bg-slate-50 py-24">
+    <section id="galeria" className="scroll-mt-28 bg-slate-50 py-14 md:py-24">
       <div className="mx-auto max-w-7xl px-6">
 
         <SectionHeading
@@ -75,7 +75,7 @@ export default function Gallery() {
               <button
                 type="button"
                 onClick={() => setOpenIndex(index)}
-                className={`group block w-full overflow-hidden rounded-3xl ${iconFocusRing}`}
+                className={`group block w-full overflow-hidden rounded-2xl ${iconFocusRing}`}
               >
                 <img
                   src={photo.src}

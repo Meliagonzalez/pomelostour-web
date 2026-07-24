@@ -11,6 +11,10 @@ node_modules
 dist
 dist-ssr
 *.local
+.env*
+
+# Fuente del logo, usada solo por scripts/optimize-images.js
+scripts/logo-source.png
 
 # Editor directories and files
 .vscode/*

@@ -1,12 +1,12 @@
 import Reveal from "../components/Reveal";
-import riverImage from "../assets/images/Todas/DJI_0018.jpg";
+import riverImage from "../assets/images/optimized/river.webp";
 
 export default function River() {
   return (
-    <section id="rio" className="scroll-mt-28 bg-white py-24">
+    <section id="rio" className="scroll-mt-28 bg-white py-14 md:py-24">
       <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-2 lg:items-center">
 
-        <Reveal className="overflow-hidden rounded-3xl">
+        <Reveal className="overflow-hidden rounded-2xl">
           <img
             src={riverImage}
             alt="Vista aérea del Río Chimehuín serpenteando entre bosques, con el Volcán Lanín de fondo"
@@ -18,25 +18,25 @@ export default function River() {
         <Reveal delay={100}>
           <div>
 
-            <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-pink-500">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-brand">
               Patagonia
             </p>
 
-            <h2 className="mb-6 text-4xl font-black text-slate-900 md:text-5xl">
+            <h2 className="mb-6 text-balance text-4xl font-black leading-tight text-slate-900 md:text-5xl">
               El Río Chimehuín
             </h2>
 
-            <p className="mb-6 text-lg text-slate-600">
+            <p className="mb-6 text-lg leading-relaxed text-slate-600">
               Navegá uno de los ríos más emblemáticos de la Patagonia argentina,
               rodeado de bosques, montañas y paisajes únicos.
             </p>
 
-            <p className="mb-6 text-slate-600">
+            <p className="mb-6 leading-relaxed text-slate-600">
               Nuestra experiencia combina aventura, naturaleza y diversión en un
               entorno privilegiado a pocos minutos de San Martín de los Andes.
             </p>
 
-            <p className="text-slate-600">
+            <p className="leading-relaxed text-slate-600">
               Nace en el Lago Huechulafquen y recorre bosques andino-patagónicos
               con el Volcán Lanín de fondo. Aguas cristalinas de 16 a 18°C,
               nivel de dificultad medio en primavera y bajo-medio en verano.
