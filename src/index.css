@@ -18,6 +18,33 @@ body {
   color: #ffffff;
 }
 
+:root {
+  --rdp-accent-color: #e0218a;
+  --rdp-accent-background-color: #fce7f3;
+  --rdp-day-height: 2.25rem;
+  --rdp-day-width: 2.25rem;
+  --rdp-selected-border: 2px solid #e0218a;
+}
+
+/* react-day-picker's own .rdp-root re-declares these same variables, and its
+   stylesheet is bundled after this file, so an equal-specificity override
+   here would still lose to source order. Use a higher-specificity selector
+   so the brand values always win regardless of import order. */
+html .rdp-root {
+  --rdp-accent-color: #e0218a;
+  --rdp-accent-background-color: #fce7f3;
+  --rdp-day-height: 2.25rem;
+  --rdp-day-width: 2.25rem;
+  --rdp-selected-border: 2px solid #e0218a;
+}
+
+@media (max-width: 767px) {
+  html .rdp-root {
+    --rdp-day-height: 2.75rem;
+    --rdp-day-width: 2.75rem;
+  }
+}
+
 @keyframes fade-up-in {
   from {
     opacity: 0;

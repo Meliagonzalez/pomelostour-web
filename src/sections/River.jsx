@@ -27,7 +27,7 @@ export default function River() {
             </h2>
 
             <p className="mb-6 text-lg leading-relaxed text-slate-600">
-              Navegá uno de los ríos más emblemáticos de la Patagonia argentina,
+              Navegá uno de los ríos más emblemáticos de Neuquen en la Patagonia Argentina,
               rodeado de bosques, montañas y paisajes únicos.
             </p>
 
