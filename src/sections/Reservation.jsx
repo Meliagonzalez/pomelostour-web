@@ -3,7 +3,6 @@ import { DayPicker } from "react-day-picker";
 import "react-day-picker/style.css";
 import { es } from "react-day-picker/locale";
 import Reveal from "../components/Reveal";
-import SectionHeading from "../components/SectionHeading";
 
 const focusRing =
   "focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-brand";
@@ -165,17 +164,48 @@ export default function Reservation() {
   return (
     <section
       id="reserva"
-      className="scroll-mt-28 bg-white py-14 md:py-24"
+      className="scroll-mt-28 bg-slate-950 py-12 md:py-20"
     >
-      <div className="mx-auto max-w-4xl px-6">
+      <div className="mx-auto max-w-6xl px-6">
 
-        <SectionHeading
-          eyebrow="Reserva"
-          title="Reservá tu lugar"
-          description="Elegí el turno y la cantidad de personas. Te responderemos por WhatsApp con la disponibilidad y toda la información necesaria."
-        />
+        <p className="mb-3 text-center text-sm font-semibold uppercase tracking-widest text-brand">
+          Reserva
+        </p>
 
-        <Reveal as="div" className="rounded-2xl bg-slate-50 p-8 shadow-sm">
+        <h2 className="mb-4 text-balance text-center text-4xl font-black leading-tight text-white md:text-5xl">
+          Reservá tu lugar
+        </h2>
+
+        <p className="mx-auto mb-10 max-w-2xl text-center leading-relaxed text-slate-300">
+          Elegí el turno y la cantidad de personas. Te responderemos por WhatsApp con la
+          disponibilidad y toda la información necesaria.
+        </p>
+
+        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+
+          <Reveal className="hidden lg:block">
+            <div className="space-y-6">
+              {[
+                { title: "Respuesta rápida", description: "Confirmamos disponibilidad por WhatsApp en minutos." },
+                { title: "Cupos limitados", description: "Los turnos mañana y tarde tienen lugares reducidos por embarcación." },
+                { title: "Cancelación flexible", description: "Con más de 24 hs de anticipación, devolución del 100%." },
+              ].map((point) => (
+                <div key={point.title} className="flex gap-4">
+                  <span className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand/20 text-brand">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                    </svg>
+                  </span>
+                  <div>
+                    <p className="font-bold text-white">{point.title}</p>
+                    <p className="mt-1 text-sm leading-relaxed text-slate-400">{point.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+
+        <Reveal as="div" delay={100} className="rounded-2xl bg-white p-8 shadow-2xl">
 
           <div className="grid gap-6 md:grid-cols-2">
 
@@ -347,6 +377,8 @@ export default function Reservation() {
           </div>
 
         </Reveal>
+
+        </div>
       </div>
     </section>
   );

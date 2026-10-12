@@ -3,14 +3,14 @@ import Footer from "./components/Footer";
 import WhatsAppFloatingButton from "./components/WhatsAppFloatingButton";
 import Hero from "./sections/Hero";
 import TrustBar from "./sections/TrustBar";
-import ExperienceTimeline from "./sections/ExperienceTimeline";
-import Reservation from "./sections/Reservation";
-import Safety from "./sections/Safety";
 import River from "./sections/River";
+import ExperienceTimeline from "./sections/ExperienceTimeline";
+import OurBase from "./sections/OurBase";
+import Equipment from "./sections/Equipment";
 import Gallery from "./sections/Gallery";
 import Testimonials from "./sections/Testimonials";
+import Reservation from "./sections/Reservation";
 import Faq from "./sections/Faq";
-import Contact from "./sections/Contact";
 
 export default function App() {
   return (
@@ -27,14 +27,14 @@ export default function App() {
       <main id="main">
         <Hero />
         <TrustBar />
-        <ExperienceTimeline />
-        <Reservation />
-        <Safety />
         <River />
+        <ExperienceTimeline />
+        <OurBase />
+        <Equipment />
         <Gallery />
         <Testimonials />
+        <Reservation />
         <Faq />
-        <Contact />
       </main>
 
       <Footer />

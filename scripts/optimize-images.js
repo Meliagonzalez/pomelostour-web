@@ -11,12 +11,16 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
 
 const SRC_DIR = path.join(root, "src/assets/images/Todas");
+const BASE_SRC_DIR = path.join(root, "src/assets/images/base");
+const EQUIPMENT_SRC_DIR = path.join(root, "src/assets/images/equipamiento");
+const RIVER_SRC_DIR = path.join(root, "src/assets/images/river");
 const OUT_DIR = path.join(root, "src/assets/images/optimized");
 const PUBLIC_DIR = path.join(root, "public");
 const LOGO_SOURCE = path.join(__dirname, "logo-source.png");
 
-async function toWebp(inputFile, outputFile, { width, quality }) {
-  await sharp(path.join(SRC_DIR, inputFile))
+async function toWebp(inputFile, outputFile, { width, quality }, srcDir = SRC_DIR) {
+  await sharp(path.join(srcDir, inputFile))
+    .rotate()
     .resize({ width, withoutEnlargement: true })
     .webp({ quality })
     .toFile(path.join(OUT_DIR, outputFile));
@@ -52,6 +56,38 @@ async function main() {
   ];
   for (const [input, output] of galleryPhotos) {
     await toWebp(input, output, { width: 1920, quality: 82 });
+  }
+
+  console.log("Base (6 fotos)");
+  const basePhotos = [
+    ["deck.jpeg", "base-deck.webp", 1600],
+    ["deck2.jpeg", "base-deck-2.webp", 1600],
+    ["vista-lanin.jpeg", "base-vista-lanin.webp", 1600],
+    ["interior1.jpeg", "base-interior-1.webp", 1200],
+    ["interior2.jpeg", "base-interior-2.webp", 1200],
+    ["banos.jpeg", "base-banos.webp", 1200],
+  ];
+  for (const [input, output, width] of basePhotos) {
+    await toWebp(input, output, { width, quality: 82 }, BASE_SRC_DIR);
+  }
+
+  console.log("Equipamiento (7 fotos)");
+  const equipmentPhotos = [
+    ["equipamiento-todo.jpeg", "equip-grupo.webp", 1600],
+    ["traje-de-neopreno.jpeg", "equip-traje.webp", 1200],
+    ["campera-rompeviento.jpeg", "equip-campera.webp", 1200],
+    ["casco.jpeg", "equip-casco.webp", 1000],
+    ["botas-para-agua.jpeg", "equip-botas.webp", 1000],
+    ["medias-neopreno.jpeg", "equip-medias.webp", 1000],
+    ["chaleco.jpeg", "equip-chaleco.webp", 1000],
+  ];
+  for (const [input, output, width] of equipmentPhotos) {
+    await toWebp(input, output, { width, quality: 82 }, EQUIPMENT_SRC_DIR);
+  }
+
+  console.log("River Plate (3 fotos)");
+  for (const n of ["01", "02", "03"]) {
+    await toWebp(`river-${n}.jpg`, `river-plate-${n}.webp`, { width: 1200, quality: 80 }, RIVER_SRC_DIR);
   }
 
   console.log("Logo (src/assets/logo.png)");

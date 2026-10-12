@@ -84,7 +84,7 @@ export default function Faq() {
   }
 
   return (
-    <section id="faq" className="scroll-mt-28 bg-slate-50 py-14 md:py-24">
+    <section id="faq" className="scroll-mt-28 bg-slate-50 py-12 md:py-20">
       <div className="mx-auto max-w-3xl px-6">
 
         <SectionHeading
@@ -93,7 +93,7 @@ export default function Faq() {
           description="Algunas respuestas rápidas antes de reservar."
         />
 
-        <div className="mb-8 flex gap-2 overflow-x-auto whitespace-nowrap pb-2">
+        <div className="mb-8 flex gap-1.5 overflow-x-auto whitespace-nowrap rounded-full bg-white p-1.5 shadow-sm">
           {categorias.map((cat) => (
             <button
               key={cat.id}
@@ -103,7 +103,7 @@ export default function Faq() {
               className={`shrink-0 rounded-full px-5 py-2.5 text-sm font-semibold transition-colors duration-150 ${focusRing} ${
                 activeCategory === cat.id
                   ? "bg-brand text-white"
-                  : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+                  : "text-slate-600 hover:bg-slate-100"
               }`}
             >
               {cat.label}
@@ -115,7 +115,7 @@ export default function Faq() {
           {activeCategoryData.preguntas.map((faq, index) => (
             <Reveal key={`${activeCategory}-${faq.q}`} delay={index * 60}>
               <details
-                className="group rounded-2xl border border-slate-200 bg-white p-6"
+                className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-shadow duration-200 hover:shadow-md"
                 open={openQuestion === faq.q}
                 onToggle={(e) => {
                   setOpenQuestion(e.target.open ? faq.q : null);
@@ -149,7 +149,7 @@ export default function Faq() {
           ))}
         </div>
 
-        <div className="mt-12 text-center">
+        <div className="mt-10 text-center">
           <p className="mb-4 text-slate-600">¿Tu consulta no está acá?</p>
 
           <a

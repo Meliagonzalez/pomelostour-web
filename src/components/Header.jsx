@@ -3,12 +3,12 @@ import logo from "../assets/logo-optimized.webp";
 
 const links = [
   { label: "Experiencia", href: "#experiencia" },
-  { label: "Reserva", href: "#reserva" },
-  { label: "Seguridad", href: "#seguridad" },
+  { label: "Base", href: "#base" },
+  { label: "Equipamiento", href: "#equipamiento" },
   { label: "Río", href: "#rio" },
   { label: "Galería", href: "#galeria" },
+  { label: "Opiniones", href: "#opiniones" },
   { label: "FAQ", href: "#faq" },
-  { label: "Contacto", href: "#contacto" },
 ];
 
 const focusRing =
@@ -34,14 +34,14 @@ export default function Header() {
         scrolled ? "bg-black/80 backdrop-blur-sm" : "bg-black/50 backdrop-blur-md"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
 
         {/* Logo */}
         <a href="#" className={`flex items-center gap-3 rounded-lg ${focusRing}`}>
           <img
             src={logo}
             alt="Pomelostour"
-            className="h-40 w-auto"
+            className="h-12 w-auto"
           />
 
           <div>
