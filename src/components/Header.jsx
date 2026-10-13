@@ -4,9 +4,9 @@ import logo from "../assets/logo-optimized.webp";
 const links = [
   { label: "Experiencia", href: "#experiencia" },
   { label: "Base", href: "#base" },
-  { label: "Equipamiento", href: "#equipamiento" },
   { label: "Río", href: "#rio" },
   { label: "Galería", href: "#galeria" },
+  { label: "Equipamiento", href: "#equipamiento" },
   { label: "Opiniones", href: "#opiniones" },
   { label: "FAQ", href: "#faq" },
 ];

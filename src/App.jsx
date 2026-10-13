@@ -30,8 +30,8 @@ export default function App() {
         <River />
         <ExperienceTimeline />
         <OurBase />
-        <Equipment />
         <Gallery />
+        <Equipment />
         <Testimonials />
         <Reservation />
         <Faq />
