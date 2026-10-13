@@ -89,7 +89,8 @@ export default function ExperienceTimeline() {
 
                 <p className="mt-2 leading-relaxed text-slate-600">
                   Uno de los clubes más importantes de Argentina eligió vivir la
-                  experiencia Pomelostour durante sus visitas a San Martín de los Andes.
+                  experiencia Pomelostour durante sus visitas a San Martín de los Andes
+                  en 2022 y 2026.
                 </p>
               </div>
             </div>
