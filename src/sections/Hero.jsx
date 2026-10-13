@@ -4,7 +4,7 @@ import heroFallback from "../assets/images/optimized/hero-fallback.jpg";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden sm:h-[72vh] sm:min-h-[560px]">
+    <section className="relative overflow-hidden">
       {/* Imagen */}
       <picture>
         <source media="(max-width: 768px)" srcSet={heroMobile} type="image/webp" />
@@ -23,8 +23,8 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
 
-      {/* Contenido */}
-      <div className="relative z-10 mx-auto flex max-w-7xl flex-col justify-end px-6 pb-12 pt-28 lg:px-12 md:pb-16 sm:h-[72vh] sm:min-h-[560px] sm:pt-0">
+      {/* Contenido: altura mínima (no fija) para que crezca si el texto no entra; pt-28 deja libre el navbar fijo */}
+      <div className="relative z-10 mx-auto flex max-w-7xl flex-col justify-end px-6 pb-12 pt-28 lg:px-12 md:pb-16 sm:min-h-[max(72vh,560px)]">
         <div className="max-w-2xl animate-fade-up">
           {/* Badges */}
           <div className="mb-4 flex flex-wrap items-center gap-3">
