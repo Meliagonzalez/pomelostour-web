@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import Lightbox, { ZoomHint } from "./Lightbox";
 
 const INTERVAL_MS = 2500;
+// Con más fotos que esto, los puntos no entran en móvil: se muestra un contador.
+const MAX_DOTS = 12;
 
 const focusRing =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
@@ -19,7 +21,13 @@ function prefersReducedMotion() {
 // Carrusel con fundido que avanza solo. Cada foto: { src, alt, position? }.
 // Click en la foto la abre ampliada en el Lightbox.
 // Se pausa con el cursor encima, con foco dentro o con el visor abierto; con reduced-motion no avanza solo.
-export default function FadeCarousel({ photos, label, className = "" }) {
+// Solo se montan la foto actual y sus vecinas, para no descargar toda la serie de entrada.
+function isNear(i, index, total) {
+  const distance = Math.abs(i - index);
+  return Math.min(distance, total - distance) <= 1;
+}
+
+export default function FadeCarousel({ photos, label, className = "", interval = INTERVAL_MS }) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [openIndex, setOpenIndex] = useState(null);
@@ -40,9 +48,9 @@ export default function FadeCarousel({ photos, label, className = "" }) {
   // Un timeout por foto: cualquier cambio manual reinicia la cuenta.
   useEffect(() => {
     if (stopped) return;
-    const id = setTimeout(() => setIndex((i) => (i + 1) % photos.length), INTERVAL_MS);
+    const id = setTimeout(() => setIndex((i) => (i + 1) % photos.length), interval);
     return () => clearTimeout(id);
-  }, [index, stopped, photos.length]);
+  }, [index, stopped, photos.length, interval]);
 
   return (
     <div
@@ -57,7 +65,7 @@ export default function FadeCarousel({ photos, label, className = "" }) {
         if (!e.currentTarget.contains(e.relatedTarget)) setPaused(false);
       }}
     >
-      {photos.map((photo, i) => (
+      {photos.map((photo, i) => isNear(i, index, photos.length) && (
         <img
           key={photo.src}
           src={photo.src}
@@ -103,20 +111,26 @@ export default function FadeCarousel({ photos, label, className = "" }) {
             </svg>
           </button>
 
-          <div className="absolute inset-x-0 bottom-0 flex justify-center gap-1.5 bg-gradient-to-t from-black/40 to-transparent pb-3 pt-6">
-            {photos.map((photo, i) => (
-              <button
-                key={photo.src}
-                type="button"
-                onClick={() => goTo(i)}
-                aria-label={`Ver foto ${i + 1} de ${photos.length}`}
-                aria-current={i === index}
-                className={`h-2 rounded-full transition-all duration-300 ${focusRing} ${
-                  i === index ? "w-5 bg-white" : "w-2 bg-white/60 hover:bg-white/90"
-                }`}
-              />
-            ))}
-          </div>
+          {photos.length > MAX_DOTS ? (
+            <div className="pointer-events-none absolute bottom-3 right-3 rounded-full bg-black/45 px-3 py-1 text-sm font-medium tabular-nums text-white backdrop-blur-sm">
+              {index + 1} / {photos.length}
+            </div>
+          ) : (
+            <div className="absolute inset-x-0 bottom-0 flex justify-center gap-1.5 bg-gradient-to-t from-black/40 to-transparent pb-3 pt-6">
+              {photos.map((photo, i) => (
+                <button
+                  key={photo.src}
+                  type="button"
+                  onClick={() => goTo(i)}
+                  aria-label={`Ver foto ${i + 1} de ${photos.length}`}
+                  aria-current={i === index}
+                  className={`h-2 rounded-full transition-all duration-300 ${focusRing} ${
+                    i === index ? "w-5 bg-white" : "w-2 bg-white/60 hover:bg-white/90"
+                  }`}
+                />
+              ))}
+            </div>
+          )}
         </>
       )}
 

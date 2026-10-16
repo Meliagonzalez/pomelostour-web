@@ -118,7 +118,12 @@ export default function Faq() {
                 className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-shadow duration-200 hover:shadow-md"
                 open={openQuestion === faq.q}
                 onToggle={(e) => {
-                  setOpenQuestion(e.target.open ? faq.q : null);
+                  const isOpen = e.currentTarget.open;
+                  // Al cerrarse, solo limpiar si era la abierta: evita que el cierre
+                  // de la anterior pise la apertura de la nueva.
+                  setOpenQuestion((prev) =>
+                    isOpen ? faq.q : prev === faq.q ? null : prev
+                  );
                 }}
               >
                 <summary

@@ -14,14 +14,15 @@ const SRC_DIR = path.join(root, "src/assets/images/Todas");
 const BASE_SRC_DIR = path.join(root, "src/assets/images/base");
 const EQUIPMENT_SRC_DIR = path.join(root, "src/assets/images/equipamiento");
 const RIVER_SRC_DIR = path.join(root, "src/assets/images/river");
+const DRONE_SRC_DIR = path.join(root, "src/assets/images/drone");
 const OUT_DIR = path.join(root, "src/assets/images/optimized");
 const PUBLIC_DIR = path.join(root, "public");
 const LOGO_SOURCE = path.join(__dirname, "logo-source.png");
 
-async function toWebp(inputFile, outputFile, { width, quality }, srcDir = SRC_DIR) {
+async function toWebp(inputFile, outputFile, { width, height, quality }, srcDir = SRC_DIR) {
   await sharp(path.join(srcDir, inputFile))
     .rotate()
-    .resize({ width, withoutEnlargement: true })
+    .resize({ width, height, fit: "inside", withoutEnlargement: true })
     .webp({ quality })
     .toFile(path.join(OUT_DIR, outputFile));
   console.log(`  ${inputFile} -> optimized/${outputFile} (w<=${width}, q${quality})`);
@@ -56,6 +57,16 @@ async function main() {
   ];
   for (const [input, output] of galleryPhotos) {
     await toWebp(input, output, { width: 1920, quality: 82 });
+  }
+  await toWebp("grupo-sendero.jpeg", "grupo-sendero.webp", { width: 1600, height: 1600, quality: 82 });
+
+  console.log("Galería: drone (17 fotos)");
+  const droneIds = [
+    "0001", "0011", "0030", "0031", "0033", "0046", "0051", "0061", "0062",
+    "0063", "0064", "0075", "0076", "0093", "0096", "0099", "0102",
+  ];
+  for (const id of droneIds) {
+    await toWebp(`DJI_${id}.jpg`, `drone-${id}.webp`, { width: 1600, height: 1600, quality: 80 }, DRONE_SRC_DIR);
   }
 
   console.log("Base (6 fotos)");
